@@ -23,6 +23,10 @@ networking.networkmanager.enable = true;
 networking.wireless.enable = true; # Enables wireless support vis wpa_supplicant.
 nix.settings.download-buffer-size = 524288000;
 
+hardware.bluetooth.enable = true;
+services.upower.enable = true;
+services.power-profiles-daemon.enable = true;
+
 # Localization
 time.timeZone = "America/Chicago";
 i18n.defaultLocale = "en_US.UTF-8";
@@ -85,6 +89,7 @@ environment.systemPackages = with pkgs; [
   kitty
   fish
   kdePackages.kate
+  kdePackages.konsole
   kdePackages.dolphin
   
   # Niri dependencies
