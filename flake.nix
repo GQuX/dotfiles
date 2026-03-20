@@ -21,6 +21,7 @@ let
 in {
   nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
     inherit system;
+    specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix
       ./noctalia.nix
