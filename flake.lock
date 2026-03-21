@@ -20,7 +20,7 @@
         "type": "github"
       }
     },
-    "niri": {
+    "niri-flake": {
       "inputs": {
         "niri-stable": "niri-stable",
         "niri-unstable": "niri-unstable",
@@ -188,7 +188,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "niri": "niri",
+        "niri-flake": "niri-flake",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
         "noctalia-qs": "noctalia-qs"

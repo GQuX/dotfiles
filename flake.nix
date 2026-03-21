@@ -22,7 +22,7 @@ in {
     specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix
-      niri-flake.nixosModules.niri
+#      niri-flake.nixosModules.niri
       ./noctalia.nix
 
       home-manager.nixosModules.home-manager {
