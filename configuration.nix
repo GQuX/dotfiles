@@ -97,28 +97,4 @@ environment.systemPackages = with pkgs; [
   alacritty
 ];
 
-programs.niri = {
-  enable = true;
-  settings = {
-    spawn-at-startup = [
-      { command = [ "noctalia-shell" ]; }
-    ];
-
-    input = {
-      keyboard.xkb.layout = "us";
-      touchpad.tap = true;
-    };
-
-    layout = {
-      gaps = 16;
-      center-focused-column = "never";
-    };
-
-    binds = with pkgs.niri; {
-      "Mod+Return".action.spawn = [ "alacritty" ];
-      "Mod+Q".action.quit = [];
-    };
-  };
-};
-
 }
