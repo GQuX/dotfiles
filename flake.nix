@@ -26,7 +26,8 @@ in {
       ./configuration.nix
       ./noctalia.nix
       niri.nixosModules.niri
-    ];
+      ./niri.nix
+      ];
   };
 };
 
