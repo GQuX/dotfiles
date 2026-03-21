@@ -5,6 +5,7 @@
 
 imports = [
   ./hardware-configuration.nix # Hardware scan results
+  ./niri.nix
 ];
 
 system.stateVersion = "25.11";
