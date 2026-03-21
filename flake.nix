@@ -5,7 +5,7 @@ inputs = {
   home-manager.url = "github:nix-community/home-manager";
   home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  niri.url = "github:sodiboo/niri-flake";
+  niri-flake.url = "github:sodiboo/niri-flake";
   noctalia.url = "github:noctalia-dev/noctalia-shell";
   noctalia.inputs.nixpkgs.follows = "nixpkgs";
   noctalia.inputs.noctalia-qs.follows = "noctalia-qs";
@@ -22,7 +22,7 @@ in {
     specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix
-      niri.nixosModules.niri
+      niri-flake.nixosModules.niri
       ./noctalia.nix
 
       home-manager.nixosModules.home-manager {
