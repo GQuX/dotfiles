@@ -78,7 +78,7 @@ users.users.icarus = {
 
 nixpkgs.config.allowUnfree = true;
 # programs.hyprland.enable = true;
-programs.niri.enable = true;
+# programs.niri.enable = true;
 programs.firefox.enable = true;
 
 environment.systemPackages = with pkgs; [
@@ -96,5 +96,29 @@ environment.systemPackages = with pkgs; [
   foot
   alacritty
 ];
+
+programs.niri = {
+  enable = true;
+  settings = {
+    spawn-at-startup = [
+      { command = [ "noctalia-shell" ]; }
+    ];
+
+    input = {
+      keyboard.xkb.layout = "us";
+      touchpad.tap = true;
+    };
+
+    layout = {
+      gaps = 16;
+      center-focused-column = "never";
+    };
+
+    binds = with pkgs.niri; {
+      "Mod+Return".action.spawn = [ "alacritty" ];
+      "Mod+Q".action.quit = [];
+    };
+  };
+};
 
 }
