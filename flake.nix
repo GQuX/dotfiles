@@ -13,7 +13,7 @@ inputs = {
   noctalia-qs.inputs.nixpkgs.follows = "nixpkgs";
 };
 
-outputs = inputs @ { self, nixpkgs, home-manager, niri, ... }:
+outputs = inputs @ { self, nixpkgs, home-manager, niri-flake, ... }:
 let
   system = "x86_64-linux";
 in {
