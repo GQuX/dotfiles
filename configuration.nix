@@ -7,6 +7,11 @@ imports = [
   ./hardware-configuration.nix # Hardware scan results
 ];
 
+environment.pathsToLink = [
+  "/share/applications"
+  "/share/xdg-desktop-portal"
+];
+
 system.stateVersion = "25.11";
 networking.hostName = "thinkpad";
 
