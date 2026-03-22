@@ -23,6 +23,7 @@ in {
     modules = [
       ./configuration.nix
 #      ./noctalia.nix
+      ./niri.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
