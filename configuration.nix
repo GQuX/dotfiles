@@ -48,13 +48,14 @@ i18n.extraLocaleSettings = {
 };
 
 # Enable the X11 windowing system.
-services.xserver.enable = true;
+# services.xserver.enable = true;
+# services.xserver.xkb = {
+#   layout = "us";
+#   variant = "";
+# };
 
-# Configure keymap in X11
-services.xserver.xkb = {
-  layout = "us";
-  variant = "";
-};
+services.displayManager.sddm.enable = true;
+services.displayManager.sddm.wayland.enable = true;
 
 # Enable CUPS to print documents.
 services.printing.enable = true;
@@ -82,7 +83,7 @@ users.users.icarus = {
 
 
 nixpkgs.config.allowUnfree = true;
-#programs.niri.enable = true;
+programs.niri.enable = true;
 programs.firefox.enable = true;
 
 environment.systemPackages = with pkgs; [
