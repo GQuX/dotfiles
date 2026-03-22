@@ -5,7 +5,7 @@
 
 imports = [
   ./hardware-configuration.nix # Hardware scan results
-  ./niri
+  ./home
 ];
 
 #environment.pathsToLink = [
@@ -70,17 +70,6 @@ services.pipewire = {
   alsa.support32Bit = true;
   pulse.enable = true;
 };
-
-# Define a user account. Don't forget to set a password with ‘passwd’.
-users.users.icarus = {
-  isNormalUser = true;
-  description = "icarus";
-  extraGroups = [ "networkmanager" "wheel" ];
-  packages = with pkgs; [
-    kdePackages.kate
-  ];
-};
-
 
 
 nixpkgs.config.allowUnfree = true;

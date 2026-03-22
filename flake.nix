@@ -18,10 +18,18 @@ inputs = {
 	};
 };
 
-outputs = { self, nixpkgs, home-manager, niri, noctalia, ... } @ inputs: {
+outputs = { self, nixpkgs, home-manager, niri, noctalia, ... } @ inputs: let
+	inherit (self) outputs;
+	user = "icarus";
+	userDescription = "it's icarus!";
+in {
 	nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
+		specialArgs = {
+			inherit inputs outputs;
+			inherit user userDescription;
+		};
 		modules = [
-			./configuration.nix
+			./configuration.nix # Core Module
 
 			home-manager.nixosModules.home-manager { home-manager = {
 				useGlobalPkgs = true;
