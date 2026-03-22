@@ -16,11 +16,16 @@ home-manager = {
 		inherit user userDescription;
 	};
 
-	users.${user}.imports = [
-		./niri
-	];
+	users.${user} = {
+		imports = [
+			./niri
+		];
 
-	users.${user}.home.stateVersion = "25.11";
+		home = {
+			stateVersion = "25.11";
+			username = "${user}";
+		};
+	};
 };
 
 }

@@ -71,10 +71,16 @@ services.pipewire = {
   pulse.enable = true;
 };
 
+# users.users.icarus = {
+#   isNormalUser = true;
+#   description = "bleh";
+#   extraGroups = [ "networkmanager" "wheel" ];
+# };
 
 nixpkgs.config.allowUnfree = true;
 programs.firefox.enable = true;
 programs.niri.enable = true;
+programs.fish.enable = true;
 
 environment.systemPackages = with pkgs; [
   vim
