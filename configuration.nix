@@ -78,7 +78,7 @@ users.users.icarus = {
 
 nixpkgs.config.allowUnfree = true;
 # programs.hyprland.enable = true;
-# programs.niri.enable = true;
+programs.niri.enable = true;
 programs.firefox.enable = true;
 
 environment.systemPackages = with pkgs; [
