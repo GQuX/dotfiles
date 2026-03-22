@@ -5,7 +5,7 @@ inputs = {
   home-manager.url = "github:nix-community/home-manager";
   home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  niri-flake.url = "github:sodiboo/niri-flake";
+  niri.url = "github:sodiboo/niri-flake";
   noctalia.url = "github:noctalia-dev/noctalia-shell";
   noctalia.inputs.nixpkgs.follows = "nixpkgs";
   noctalia.inputs.noctalia-qs.follows = "noctalia-qs";
@@ -13,7 +13,7 @@ inputs = {
   noctalia-qs.inputs.nixpkgs.follows = "nixpkgs";
 };
 
-outputs = inputs @ { self, nixpkgs, home-manager, niri-flake, ... }:
+outputs = inputs @ { self, nixpkgs, home-manager, niri, ... }:
 let
   system = "x86_64-linux";
 in {

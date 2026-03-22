@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, niri-flake, ... }: {
+{ pkgs, config, inputs, niri, ... }: {
 
 programs.niri.enable = true;
 
