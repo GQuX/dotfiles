@@ -1,43 +1,35 @@
 {
 
 inputs = {
-  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-  home-manager.url = "github:nix-community/home-manager";
-  home-manager.inputs.nixpkgs.follows = "nixpkgs";
+	nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+	home-manage = {
+		url = "github:nix-community/home-manager";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
 
-  niri.url = "github:sodiboo/niri-flake";
-  noctalia.url = "github:noctalia-dev/noctalia-shell";
-  noctalia.inputs.nixpkgs.follows = "nixpkgs";
-  noctalia.inputs.noctalia-qs.follows = "noctalia-qs";
-  noctalia-qs.url = "github:noctalia-dev/noctalia-qs";
-  noctalia-qs.inputs.nixpkgs.follows = "nixpkgs";
+	niri = {
+		url = "github:sodiboo/niri-flake";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
+
+	noctalia = {
+		url = "github:noctalia-dev/noctalia-shell";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
 };
 
-outputs = inputs @ { self, nixpkgs, home-manager, niri, ... }:
-let
-  system = "x86_64-linux";
-in {
-  nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = { inherit inputs; };
-    modules = [
-      ./configuration.nix
-      inputs.niri.nixosModules.niri
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs; };
-        home-manager.users.icarus = {
-          imports = [
-            ./home.nix
-            ./niri.nix
-            niri.homeModules.niri # Loads the option
-            ./noctalia.nix
-          ];
-        };
-      }
-    ];
-  };
+outputs = { self, nixpkgs, home-manager, niri, noctalia, ... } @ inputs: {
+	nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
+		modules = [
+			./configuration.nix
+
+			home-manager.nixosModules.home-manager { home-manager = {
+				useGlobalPkgs = true;
+				useUserPackages = true;
+				backupFileExtension = "backup";
+			}; }
+		];
+	};
 };
 
 }

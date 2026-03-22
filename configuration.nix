@@ -5,6 +5,7 @@
 
 imports = [
   ./hardware-configuration.nix # Hardware scan results
+  ./niri
 ];
 
 #environment.pathsToLink = [
