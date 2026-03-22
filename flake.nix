@@ -22,7 +22,7 @@ in {
     specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix
-#      ./noctalia.nix
+      inputs.niri.nixosModules.niri
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -32,6 +32,7 @@ in {
             ./home.nix
             ./niri.nix
             niri.homeModules.niri # Loads the option
+            ./noctalia.nix
           ];
         };
       }

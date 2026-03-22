@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }: {
 
-environment.systemPackages = with pkgs; [
+home.packages = [
   inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 ];
 

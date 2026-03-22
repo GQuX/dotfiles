@@ -7,10 +7,10 @@ imports = [
   ./hardware-configuration.nix # Hardware scan results
 ];
 
-environment.pathsToLink = [
-  "/share/applications"
-  "/share/xdg-desktop-portal"
-];
+#environment.pathsToLink = [
+#  "/share/applications"
+#  "/share/xdg-desktop-portal"
+#];
 
 system.stateVersion = "25.11";
 networking.hostName = "thinkpad";
@@ -83,8 +83,8 @@ users.users.icarus = {
 
 
 nixpkgs.config.allowUnfree = true;
-programs.niri.enable = true;
 programs.firefox.enable = true;
+programs.niri.enable = true;
 
 environment.systemPackages = with pkgs; [
   vim
@@ -96,8 +96,7 @@ environment.systemPackages = with pkgs; [
   kdePackages.kate
   kdePackages.konsole
   kdePackages.dolphin
-  
-  # Niri dependencies
+
   foot
   alacritty
 ];
