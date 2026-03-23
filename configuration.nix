@@ -8,11 +8,6 @@ imports = [
   ./home
 ];
 
-#environment.pathsToLink = [
-#  "/share/applications"
-#  "/share/xdg-desktop-portal"
-#];
-
 system.stateVersion = "25.11";
 networking.hostName = "thinkpad";
 
@@ -48,13 +43,6 @@ i18n.extraLocaleSettings = {
   LC_TIME = "en_US.UTF-8";
 };
 
-# Enable the X11 windowing system.
-# services.xserver.enable = true;
-# services.xserver.xkb = {
-#   layout = "us";
-#   variant = "";
-# };
-
 services.displayManager.sddm.enable = true;
 services.displayManager.sddm.wayland.enable = true;
 
@@ -70,12 +58,6 @@ services.pipewire = {
   alsa.support32Bit = true;
   pulse.enable = true;
 };
-
-# users.users.icarus = {
-#   isNormalUser = true;
-#   description = "bleh";
-#   extraGroups = [ "networkmanager" "wheel" ];
-# };
 
 nixpkgs.config.allowUnfree = true;
 programs.firefox.enable = true;

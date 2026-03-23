@@ -12,6 +12,7 @@ users.users.${username} = {
 home-manager = {
 	verbose = true;
 	extraSpecialArgs = {
+		inherit inputs;
 		inherit username displayName;
 	};
 
