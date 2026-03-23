@@ -19,14 +19,17 @@ inputs = {
 };
 
 outputs = { self, nixpkgs, home-manager, niri, noctalia, ... } @ inputs: let
-	inherit (self) outputs;
-	user = "icarus";
-	userDescription = "it's icarus!";
+	username = "icarus";
+	displayName = "${username}";
+	homeDirectory = "/home/${username}";
+
+
 in {
 	nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
 		specialArgs = {
-			inherit inputs outputs;
-			inherit user userDescription;
+			inherit username displayName;
+			inherit homeDirectory;
+
 		};
 		modules = [
 			./configuration.nix # Core Module

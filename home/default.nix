@@ -1,9 +1,9 @@
-{ pkgs, inputs, outputs, user, userDescription, ... }: {
+{ pkgs, inputs, username, displayName, homeDirectory, ... }: {
 
 imports = [ ];
 
-users.users.${user} = {
-	description = "${userDescription}";
+users.users.${username} = {
+	description = "${displayName}";
 	isNormalUser = true;
 	extraGroups = [ "wheel" "networkmanager" ];
 	shell = pkgs.fish;
@@ -12,18 +12,18 @@ users.users.${user} = {
 home-manager = {
 	verbose = true;
 	extraSpecialArgs = {
-		inherit inputs outputs;
-		inherit user userDescription;
+		inherit username displayName;
 	};
 
-	users.${user} = {
+	users.${username} = {
 		imports = [
 			./niri
 		];
 
 		home = {
 			stateVersion = "25.11";
-			username = "${user}";
+			username = "${username}";
+			homeDirectory = "${homeDirectory}";
 		};
 	};
 };
