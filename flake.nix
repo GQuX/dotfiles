@@ -27,6 +27,7 @@ outputs = { self, nixpkgs, home-manager, niri, noctalia, ... } @ inputs: let
 in {
 	nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
 		specialArgs = {
+			inherit inputs;
 			inherit username displayName;
 			inherit homeDirectory;
 
