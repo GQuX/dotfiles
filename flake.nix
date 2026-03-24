@@ -22,15 +22,15 @@ outputs = { self, nixpkgs, home-manager, niri, noctalia, ... } @ inputs: let
 	username = "icarus";
 	displayName = "${username}";
 	homeDirectory = "/home/${username}";
-
-
+	avatar = "${homeDirectory}/.dotfiles/assets/avatars/link.png";
+	wallpaper = "${homeDirectory}/.dotfiles/assets/wallpapers/rammiel.png";
 in {
 	nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
 		specialArgs = {
 			inherit inputs;
-			inherit username displayName;
 			inherit homeDirectory;
-
+			inherit username displayName;
+			inherit avatar wallpaper;
 		};
 		modules = [
 			./configuration.nix # Core Module

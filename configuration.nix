@@ -65,18 +65,19 @@ programs.niri.enable = true;
 programs.fish.enable = true;
 
 environment.systemPackages = with pkgs; [
-  vim
   wget
   git
-  nano
-  kitty
-  fish
-  kdePackages.kate
-  kdePackages.konsole
-  kdePackages.dolphin
+  nano # Console
+  kitty # Console
+  fish  # Shell
+  kdePackages.kate    # Text Editor
+  kdePackages.konsole # Console
+  kdePackages.dolphin # File Browser
 
   foot
   alacritty
+
+  fastfetch # System stats
 ];
 
 }

@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, displayName, homeDirectory, ... }: {
+{ pkgs, inputs, username, displayName, homeDirectory, avatar, wallpaper, ... }: {
 
 imports = [ ];
 
@@ -14,6 +14,7 @@ home-manager = {
 	extraSpecialArgs = {
 		inherit inputs;
 		inherit username displayName;
+		inherit avatar wallpaper;
 	};
 
 	users.${username} = {

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, username, avatar, wallpaper, ... }: {
 
 imports = [
     inputs.niri.homeModules.niri
@@ -7,12 +7,18 @@ imports = [
 ];
 
 programs.niri.enable = true;
-#programs.niri.package = with pkgs; niri-unstable;
-
 programs.niri.settings = {
     spawn-at-startup = [
         { argv = [ "noctalia-shell" ]; }
+        { argv = [ "sh" "-c" "sleep 2 && kitty fastfetch" ]; }
     ];
+};
+
+home.file.".cache/noctalia/wallpapers.json".text = builtins.toJSON {
+    defaultWallpaper = "${wallpaper}";
+    wallpapers = {
+        "DP-1" = "${wallpaper}";
+    };
 };
 
 }
