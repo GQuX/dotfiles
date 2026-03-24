@@ -19,8 +19,8 @@ programs.noctalia-shell.settings = {
 		frameThickness = 10;
 		frameRadius    = 20;
 		showCapsule = false;
-		widgets.top = [
-			{ id = "Launcher"; useDistroLogo = true; enableColorization = true; iconColor = "${programs.noctalia-shell.colors.mTertiary}"; }
+		widgets.left = [
+			{ id = "Launcher"; useDistroLogo = true; enableColorization = true; colorizeSystemIcon = "tertiary"; }
 		];
 	};
 };
