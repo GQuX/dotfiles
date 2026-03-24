@@ -1,9 +1,12 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
 
 programs.niri.settings.binds = with config.lib.niri.actions; {
 	"Mod+Shift+Slash".action = show-hotkey-overlay; # ?
 	"Mod+Q".action = close-window;
 	"Mod+Q".repeat = false;
+
+	"Mod+L".action = spawn "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia-shell" "ipc" "call" "launcher" "toggle";
+	"Mod+L".repeat = false;
 
 	"Mod+Return".action = spawn "${pkgs.kitty}/bin/kitty";
 	"Mod+Return".repeat = false;
