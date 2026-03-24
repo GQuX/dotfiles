@@ -1,19 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }: {
 
 imports = [
-  ./hardware-configuration.nix # Hardware scan results
-  ./home
+	./hardware-configuration.nix # Hardware scan results
+	./home # home-manager
 ];
 
 system.stateVersion = "25.11";
 networking.hostName = "thinkpad";
 
-
-
-# Bootloader.
+# Bootloader
 boot.loader.systemd-boot.enable = true;
 boot.loader.efi.canTouchEfiVariables = true;
 
@@ -21,7 +16,6 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Enable networking
 networking.networkmanager.enable = true;
-networking.wireless.enable = true; # Enables wireless support vis wpa_supplicant.
 nix.settings.download-buffer-size = 524288000;
 
 hardware.bluetooth.enable = true;
@@ -32,15 +26,15 @@ services.power-profiles-daemon.enable = true;
 time.timeZone = "America/Chicago";
 i18n.defaultLocale = "en_US.UTF-8";
 i18n.extraLocaleSettings = {
-  LC_ADDRESS = "en_US.UTF-8";
-  LC_IDENTIFICATION = "en_US.UTF-8";
-  LC_MEASUREMENT = "en_US.UTF-8";
-  LC_MONETARY = "en_US.UTF-8";
-  LC_NAME = "en_US.UTF-8";
-  LC_NUMERIC = "en_US.UTF-8";
-  LC_PAPER = "en_US.UTF-8";
-  LC_TELEPHONE = "en_US.UTF-8";
-  LC_TIME = "en_US.UTF-8";
+	LC_ADDRESS = "en_US.UTF-8";
+	LC_IDENTIFICATION = "en_US.UTF-8";
+	LC_MEASUREMENT = "en_US.UTF-8";
+	LC_MONETARY = "en_US.UTF-8";
+	LC_NAME = "en_US.UTF-8";
+	LC_NUMERIC = "en_US.UTF-8";
+	LC_PAPER = "en_US.UTF-8";
+	LC_TELEPHONE = "en_US.UTF-8";
+	LC_TIME = "en_US.UTF-8";
 };
 
 services.displayManager.sddm.enable = true;
@@ -53,35 +47,36 @@ services.printing.enable = true;
 services.pulseaudio.enable = false;
 security.rtkit.enable = true;
 services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
+	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
 };
 
 nixpkgs.config.allowUnfree = true;
-programs.firefox.enable = true;
 programs.niri.enable = true;
 programs.fish.enable = true;
 
 environment.systemPackages = with pkgs; [
-  wget
-  git
-  fish  # Shell
-  kitty # Console
-  kdePackages.kate    # Text Editor
-  kdePackages.dolphin # File Browser
-  fastfetch # System stats
+	wget
+	git
+	fish  # Shell
+	kitty # Console
+	kdePackages.kate    # Text Editor
+	kdePackages.dolphin # File Browser
+	fastfetch # System stats
 
-  grim   # grabs screen
-  slurp  # region select (calls grim)
-  swappy # screenshot editor (calls slurp)
-  wl-clipboard # copy images & terminal
+	grim   # grabs screen
+	slurp  # region select (calls grim)
+	swappy # screenshot editor (calls slurp)
+	wl-clipboard # copy images & terminal
 
-  ani-cli # anime fetcher
-  mpv     # video software (ani-cli)
+	ani-cli # anime fetcher
+	mpv     # video software (ani-cli)
 
-  vesktop # discord for nix i think
+	brave # browser
+	spotify # music player
+	vesktop # electron based discord (better maintained)
 ];
 
 }

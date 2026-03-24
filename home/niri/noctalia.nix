@@ -20,20 +20,17 @@ programs.noctalia-shell.settings = {
 		frameRadius    = 20;
 		showCapsule = false;
 		widgets.left = [
-			{ id = "Launcher"; }
-			{ id = "Clock"; }
-			{ id = "SystemMonitor"; }
 			{ id = "ActiveWindow"; }
+			{ id = "Clock"; }
+			{ id = "Battery"; }
 			{ id = "MediaMini"; }
 		];
 		widgets.center = [
 			{ id = "Workspace"; hideUnoccupied = true; }
 		];
 		widgets.right = [
-			{ id = "Tray"; }
-			{ id = "Battery"; }
-			{ id = "Volume"; }
 			{ id = "Brightness"; }
+			{ id = "SystemMonitor"; }
 			{ id = "ControlCenter"; useDistroLogo = true; enableColorization = true; colorizeSystemIcon = "tertiary"; }
 		];
 	};

@@ -14,6 +14,9 @@ programs.niri.settings.binds = with config.lib.niri.actions; {
 	"Mod+K".action = spawn "${pkgs.kdePackages.kate}/bin/kate";
 	"Mod+K".repeat = false;
 
+	"Mod+S".action = spawn "${pkgs.brave}/bin/brave";
+	"Mod+S".repeat = false;
+
 	"Print".action = spawn "sh" "-c" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -";
 	"Print".repeat     = false;
 	"Mod+Print".action = spawn "sh" "-c" "${pkgs.grim}/bin/grim ~/Pictures/$(${pkgs.coreutils}/bin/date +%Y%m%d_%H%M%S).png";
