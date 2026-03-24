@@ -67,17 +67,21 @@ programs.fish.enable = true;
 environment.systemPackages = with pkgs; [
   wget
   git
-  nano # Console
-  kitty # Console
   fish  # Shell
+  kitty # Console
   kdePackages.kate    # Text Editor
-  kdePackages.konsole # Console
   kdePackages.dolphin # File Browser
-
-  foot
-  alacritty
-
   fastfetch # System stats
+
+  grim   # grabs screen
+  slurp  # region select (calls grim)
+  swappy # screenshot editor (calls slurp)
+  wl-clipboard # copy images & terminal
+
+  ani-cli # anime fetcher
+  mpv     # video software (ani-cli)
+
+  vesktop # discord for nix i think
 ];
 
 }

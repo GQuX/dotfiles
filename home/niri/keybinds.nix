@@ -2,14 +2,19 @@
 
 programs.niri.settings.binds = with config.lib.niri.actions; {
 	"Mod+Shift+Slash".action = show-hotkey-overlay; # ?
-
 	"Mod+Q".action = close-window;
 	"Mod+Q".repeat = false;
 
 	"Mod+Return".action = spawn "${pkgs.kitty}/bin/kitty";
 	"Mod+Return".repeat = false;
+
 	"Mod+K".action = spawn "${pkgs.kdePackages.kate}/bin/kate";
 	"Mod+K".repeat = false;
+
+	"Print".action = spawn "sh" "-c" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -";
+	"Print".repeat     = false;
+	"Mod+Print".action = spawn "sh" "-c" "${pkgs.grim}/bin/grim ~/Pictures/$(${pkgs.coreutils}/bin/date +%Y%m%d_%H%M%S).png";
+	"Mod+Print".repeat = false;
 
 	# Navigation
 	"Mod+Left".action  = focus-column-left;

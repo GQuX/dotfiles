@@ -19,6 +19,7 @@ home-manager = {
 
 	users.${username} = {
 		imports = [
+			./fish.nix
 			./niri
 		];
 

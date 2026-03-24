@@ -10,7 +10,8 @@ programs.niri.enable = true;
 programs.niri.settings = {
     spawn-at-startup = [
         { argv = [ "noctalia-shell" ]; }
-        { argv = [ "sh" "-c" "sleep 10 && kitty fastfetch" ]; }
+        { argv = [ "kitty" ]; }
+        #{ argv = [ "sh" "-c" "sleep 10 && kitty fastfetch" ]; }
     ];
 };
 
