@@ -1,0 +1,28 @@
+{ self, inputs, ... }: { flake.nixosModules.thinkpadHardware = { config, lib, pkgs, modulesPath, ... }: {
+
+imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+boot.initrd.kernelModules = [ ];
+boot.kernelModules = [ "kvm-intel" ];
+boot.extraModulePackages = [ ];
+
+fileSystems."/" = {
+	device = "/dev/mapper/luks-880fa722-eb73-4db1-812f-8992eda07a68";
+	fsType = "ext4";
+};
+
+boot.initrd.luks.devices."luks-880fa722-eb73-4db1-812f-8992eda07a68".device = "/dev/disk/by-uuid/880fa722-eb73-4db1-812f-8992eda07a68";
+
+fileSystems."/boot" = {
+	device = "/dev/disk/by-uuid/5FBC-BAA7";
+	fsType = "vfat";
+	options = [ "fmask=0077" "dmask=0077" ];
+};
+
+swapDevices = [ ];
+
+nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+}; }

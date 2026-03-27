@@ -1,18 +1,18 @@
-{ config, pkgs, ... }: {
+{ self, inputs, ... }: { flake.nixosModules.thinkpadConfiguration = { pkgs, lib, ... }: {
 
 imports = [
-	./hardware-configuration.nix # Hardware scan results
-	./home # home-manager
+	self.nixosModules.thinkpadHardware
+	self.nixosModules.niri
 ];
 
 system.stateVersion = "25.11";
 networking.hostName = "thinkpad";
 
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 # Bootloader
 boot.loader.systemd-boot.enable = true;
 boot.loader.efi.canTouchEfiVariables = true;
-
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Enable networking
 networking.networkmanager.enable = true;
@@ -53,8 +53,14 @@ services.pipewire = {
 	pulse.enable = true;
 };
 
+users.users.icarus = {
+	description = "icarus";
+	isNormalUser = true;
+	extraGroups = [ "wheel" "networkmanager" ];
+	shell = pkgs.fish;
+};
+
 nixpkgs.config.allowUnfree = true;
-programs.niri.enable = true;
 programs.fish.enable = true;
 
 environment.systemPackages = with pkgs; [
@@ -79,4 +85,4 @@ environment.systemPackages = with pkgs; [
 	vesktop # electron based discord (better maintained)
 ];
 
-}
+}; }
