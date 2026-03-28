@@ -1,7 +1,5 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }: { flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
 
-flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
-	modules = [ self.nixosModules.thinkpadConfiguration ];
-};
+modules = [ self.nixosModules.thinkpadConfiguration ];
 
-}
+}; }
